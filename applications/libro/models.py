@@ -20,6 +20,10 @@ class Libro(models.Model):
     portada = models.ImageField('Portada', upload_to='portadas', blank=True, null=True)
     visitas = models.PositiveIntegerField()
     
+    class Meta:
+        verbose_name = 'Libros'
+        verbose_name_plural = 'Libros'
+    
     objects = LibroManager()
     
     def __str__(self):
