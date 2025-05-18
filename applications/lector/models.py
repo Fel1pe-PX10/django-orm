@@ -1,17 +1,15 @@
 from django.db import models
 
 from applications.libro.models import Libro
+from applications.persona.models import Persona
 from .managers import PrestamoManager
 
 # Create your models here.
-class Lector(models.Model):
-    nombre = models.CharField('Nombre', max_length=50)
-    apellidos = models.CharField('Apellidos', max_length=50)
-    nacionalidad = models.CharField('Nacionalidad', max_length=50)
-    edad = models.PositiveIntegerField(default=0)
-    
-    def __str__(self):
-        return f'{self.nombre} {self.apellidos} - {self.nacionalidad}'
+class Lector(Persona):
+    class Meta:
+        verbose_name = 'Lector'
+        verbose_name_plural = 'Lectores'
+        
     
 class Prestamo(models.Model):
     lector = models.ForeignKey(Lector, on_delete=models.CASCADE)
