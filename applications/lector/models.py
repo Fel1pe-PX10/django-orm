@@ -20,5 +20,10 @@ class Prestamo(models.Model):
     
     objects = PrestamoManager()
     
+    def save(self, *args, **kwargs):
+        self.libro.disminuir_stock
+        super().save(*args, **kwargs)
+
+    
     def __str__(self):
         return self.libro.titulo
